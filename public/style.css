@@ -52,12 +52,12 @@ button:hover {
     background-color: #555;
 }
 
-#torrent-list {
+#tor-list {
     list-style-type: none;
     padding: 0;
 }
 
-#torrent-list li {
+#tor-list li {
     padding: 10px;
     margin: 5px 0;
     background-color: #f9f9f9;
