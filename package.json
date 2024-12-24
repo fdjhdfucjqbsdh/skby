@@ -1,5 +1,5 @@
 {
-  "name": "tor-indexer",
+  "name": "torrent-indexer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
