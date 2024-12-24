@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const torrentForm = document.getElementById('torrent-form');
-    const torrentList = document.getElementById('torrent-list');
+    const torForm = document.getElementById('tor-form');
+    const torList = document.getElementById('tor-list');
 
-    // Fungsi untuk mendapatkan semua torrent dari backend
-    const getTorrents = async () => {
+    // Fungsi untuk mendapatkan semua tor dari backend
+    const getTor = async () => {
         try {
-            const response = await fetch('http://localhost:3000/torrents');
-            const torrents = await response.json();
-            displayTorrents(torrents);
+            const response = await fetch('http://localhost:3000/tor');
+            const tor = await response.json();
+            displayTor(tor);
         } catch (error) {
-            console.error("Error fetching torrents:", error);
+            console.error("Error fetching tor:", error);
         }
     };
 
-    // Fungsi untuk menampilkan daftar torrent di halaman
-    const displayTorrents = (torrents) => {
-        torrentList.innerHTML = '';  // Kosongkan daftar sebelum diisi
-        torrents.forEach(torrent => {
+    // Fungsi untuk menampilkan daftar tor di halaman
+    const displayTor = (tor) => {
+        torList.innerHTML = '';  // Kosongkan daftar sebelum diisi
+        tor.forEach(tor => {
             const li = document.createElement('li');
-            li.textContent = `${torrent.name} - ${torrent.size} - ${torrent.category}`;
-            torrentList.appendChild(li);
+            li.textContent = `${tor.name} - ${tor.size} - ${tor.category}`;
+            torList.appendChild(li);
         });
     };
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/torrents', {
+            const response = await fetch('http://localhost:3000/tor', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,16 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
             alert(result.message);
-            getTorrents();  // Ambil kembali daftar torrent setelah menambahkannya
-            torrentForm.reset();  // Reset formulir
+            getTor();  // Ambil kembali daftar tor setelah menambahkannya
+            torForm.reset();  // Reset formulir
         } catch (error) {
-            console.error("Error adding torrent:", error);
+            console.error("Error adding tor:", error);
         }
     };
 
-    // Mengambil daftar torrent ketika halaman pertama kali dimuat
-    getTorrents();
+    // Mengambil daftar tor ketika halaman pertama kali dimuat
+    getTor();
 
     // Menangani submit formulir
-    torrentForm.addEventListener('submit', handleFormSubmit);
+    torForm.addEventListener('submit', handleFormSubmit);
 });
