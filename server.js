@@ -18,7 +18,7 @@ const db = mysql.createConnection({
   host: 'localhost',   // Ganti dengan host MySQL Anda
   user: 'root',        // Ganti dengan username MySQL Anda
   password: 'password', // Ganti dengan password MySQL Anda
-  database: 'torrent_db' // Nama database Anda
+  database: 'tr_db' // Nama database Anda
 });
 
 // Cek koneksi MySQL
@@ -31,7 +31,7 @@ db.connect((err) => {
 });
 
 // Endpoint untuk menambahkan torrent baru
-app.post('/torrents', (req, res) => {
+app.post('/tr', (req, res) => {
   const { name, magnet_link, size, category } = req.body;
 
   if (!name || !magnet_link || !size || !category) {
